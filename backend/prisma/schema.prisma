@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  name          String
+  passwordHash  String
+  role          Role           @default(USER)
+  createdAt     DateTime       @default(now())
+  reviews       Review[]
+  orders        Order[]
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  tokenHash String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  productId Int
+  rating    Int
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, productId])
+  @@index([productId])
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  total     Float
+  createdAt DateTime    @default(now())
+
+  userId String
+  user   User      @relation(fields: [userId], references: [id])
+  items  OrderItem[]
+}
+
+model OrderItem {
+  id            String  @id @default(cuid())
+  productId     Int
+  titleSnapshot String
+  priceSnapshot Float
+  quantity      Int
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id])
+
+  @@index([orderId])
+}

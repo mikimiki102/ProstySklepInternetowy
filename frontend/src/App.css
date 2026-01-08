@@ -1,0 +1,123 @@
+/* --- Home page polish --- */
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+  text-align: left;
+}
+
+.home-actions {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.home-badge {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.home-hero-aside {
+  display: flex;
+  align-items: stretch;
+}
+
+.home-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.home-grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.home-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.home-grid-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.home-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  text-align: left;
+}
+
+.home-steps {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.stat {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.stat-label {
+  margin-top: 2px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.home-tip {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.home-footer {
+  text-align: center;
+  margin-top: 6px;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+@media (max-width: 900px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+  .home-columns {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
